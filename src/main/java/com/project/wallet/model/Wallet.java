@@ -2,6 +2,7 @@ package com.project.wallet.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -13,6 +14,7 @@ import java.util.UUID;
 public class Wallet {
 
     @Id
+    @GeneratedValue
     private UUID id;
 
     @Column(nullable = false)
@@ -40,5 +42,13 @@ public class Wallet {
 
     public void setBalance(BigDecimal balance) {
         this.balance = balance;
+    }
+
+    public void deposit(BigDecimal amount) {
+        this.balance = this.balance.add(amount);
+    }
+
+    public void withdraw(BigDecimal amount) {
+        this.balance = this.balance.subtract(amount);
     }
 }
