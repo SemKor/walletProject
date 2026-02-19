@@ -1,7 +1,6 @@
 package com.project.wallet.dto;
 
 import com.project.wallet.model.OperationType;
-
 import java.math.BigDecimal;
 import java.util.UUID;
 

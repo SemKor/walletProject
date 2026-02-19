@@ -1,5 +1,4 @@
 package com.project.wallet.dto;
-
 import java.math.BigDecimal;
 import java.util.UUID;
 
