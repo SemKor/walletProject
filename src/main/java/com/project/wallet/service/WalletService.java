@@ -5,6 +5,7 @@ import com.project.wallet.exception.WalletNotFoundException;
 import com.project.wallet.model.OperationType;
 import com.project.wallet.model.Wallet;
 import com.project.wallet.repository.WalletRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -24,6 +25,7 @@ public class WalletService {
         return walletRepository.save(wallet);
     }
 
+    @Transactional
     public Wallet operate(UUID walletId, OperationType operationType, BigDecimal amount) {
         Wallet wallet = walletRepository.findById(walletId)
                 .orElseThrow(() -> new WalletNotFoundException("Wallet not found: " + walletId));

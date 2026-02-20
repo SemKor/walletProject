@@ -3,8 +3,10 @@ package com.project.wallet.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -14,11 +16,15 @@ import java.util.UUID;
 public class Wallet {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(nullable = false)
     private BigDecimal balance;
+
+    @Version
+    @Column(nullable = false)
+    private Long version;
 
     public Wallet() {
     }
